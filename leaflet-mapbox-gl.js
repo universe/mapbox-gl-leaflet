@@ -1,15 +1,6 @@
-(function (root, factory) {
-    if (typeof define === 'function' && define.amd) {
-        // AMD
-        define(['leaflet', 'mapbox-gl'], factory);
-    } else if (typeof exports === 'object') {
-        // Node, CommonJS-like
-        module.exports = factory(require('leaflet'), require('mapbox-gl'));
-    } else {
-        // Browser globals (root is window)
-        root.returnExports = factory(window.L, window.mapboxgl);
-    }
-}(this, function (L, mapboxgl) {
+import mapboxgl from 'mapbox-gl';
+
+export function addMapboxGL(L) {
     L.MapboxGL = L.Layer.extend({
             options: {
             updateInterval: 32,
@@ -288,6 +279,4 @@
     L.mapboxGL = function (options) {
         return new L.MapboxGL(options);
     };
-
-}));
-
+}
